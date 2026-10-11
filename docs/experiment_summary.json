@@ -1,0 +1,21 @@
+{
+  "best_combination": {
+    "transformer": "bge-m3",
+    "dim_reduction": "umap",
+    "clustering": "hdbscan"
+  },
+  "best_params": {
+    "umap_n_components": 22,
+    "umap_n_neighbors": 45,
+    "umap_min_dist": 0.08939668027317049,
+    "hdbscan_min_cluster_size": 4,
+    "hdbscan_min_samples": 6,
+    "hdbscan_epsilon": 0.22270827562118706,
+    "hdbscan_method": "leaf"
+  },
+  "metrics": {
+    "nmi": 0.5445,
+    "ari": 0.2867,
+    "silhouette": 0.5169
+  }
+}

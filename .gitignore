@@ -1,0 +1,43 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+
+# Private datasets and derived artifacts (only the fictional demo is public)
+datasets/*
+!datasets/demo_tickets.csv
+!datasets/README.md
+results/
+*.npy
+*.npz
+*.xlsx
+*.xls
+*.parquet
+*.sqlite*
+*.log
+
+# Academic reports, archives and local backups
+*.docx
+*.pdf
+*.zip
+*.bak
+*.backup
+
+# Python and editors
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

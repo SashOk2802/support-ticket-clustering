@@ -1,0 +1,5 @@
+-r requirements-demo.txt
+sentence-transformers>=3,<6
+umap-learn>=0.5.7,<0.6
+hdbscan>=0.8.40,<0.9
+openai>=1.50,<3
