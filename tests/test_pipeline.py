@@ -146,6 +146,7 @@ def test_llm_cli_requires_explicit_text_upload_permission():
         [sys.executable, str(ROOT / "apply_pipeline.py"), "--demo", "--llm-labels"],
         capture_output=True,
         text=True,
+        encoding="utf-8",
         timeout=60,
     )
     assert proc.returncode != 0
@@ -155,17 +156,20 @@ def test_llm_cli_requires_explicit_text_upload_permission():
 def test_demo_cli_runs_without_credentials_or_model_downloads(tmp_path):
     env = {k: v for k, v in os.environ.items() if k not in {"OPENAI_API_KEY", "HF_TOKEN"}}
     env["HF_HUB_OFFLINE"] = "1"
+    env["PYTHONIOENCODING"] = "cp1252"
     proc = subprocess.run(
         [sys.executable, str(ROOT / "apply_pipeline.py"), "--demo", "--output-dir", str(tmp_path)],
         env=env,
         capture_output=True,
         text=True,
+        encoding="utf-8",
         timeout=90,
     )
     assert proc.returncode == 0, proc.stderr
     result = json.loads((tmp_path / "run_summary.json").read_text(encoding="utf-8"))
     assert result["n_texts"] == 32 and result["llm_enabled"] is False
     assert result["model"] == "tfidf"
+    assert "сервер" in proc.stdout
     assert len(pd.read_csv(tmp_path / "annotated_dataset.csv")) == 32
 
 

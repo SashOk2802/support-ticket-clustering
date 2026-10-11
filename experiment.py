@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import seaborn as sns
 from dotenv import load_dotenv
-from io_utils import load_text_dataset, require_columns
+from io_utils import configure_console_utf8, load_text_dataset, require_columns
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 load_dotenv(PROJECT_ROOT / ".env")
@@ -673,6 +673,7 @@ def plot_results(results_df, save_path):
 
 
 def main():
+    configure_console_utf8()
     parser = argparse.ArgumentParser(description="Benchmark support-ticket clustering pipelines.")
     parser.add_argument("--input", type=Path, default=TEST_DATASET)
     parser.add_argument("--output-dir", type=Path, default=BASE_RESULTS / "benchmark")

@@ -17,7 +17,7 @@ from experiment import (
     load_or_compute_embeddings,
     run_pipeline,
 )
-from io_utils import load_text_dataset
+from io_utils import configure_console_utf8, load_text_dataset
 
 
 def save_results(frame, valid_mask, result, output_dir):
@@ -58,6 +58,7 @@ def save_results(frame, valid_mask, result, output_dir):
 
 
 def main():
+    configure_console_utf8()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--demo", action="store_true", help="Use fictional tickets and TF-IDF/PCA/K-Means."

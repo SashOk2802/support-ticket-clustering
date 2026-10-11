@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from io_utils import read_dataset, require_columns
+from io_utils import configure_console_utf8, read_dataset, require_columns
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
@@ -38,6 +38,7 @@ def prepare_dataset(tickets, messages, min_text_len=10):
 
 
 def main():
+    configure_console_utf8()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tickets", type=Path, default=PROJECT_ROOT / "datasets/tickets_anon.csv")
     parser.add_argument(
